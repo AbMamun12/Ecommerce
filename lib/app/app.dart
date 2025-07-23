@@ -3,6 +3,7 @@ import 'package:e_commerce/features/auth/ui/screen/otp_verification_screen.dart'
 import 'package:e_commerce/features/auth/ui/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../features/auth/ui/screen/complete_profile_screen.dart';
 import '../features/auth/ui/screen/email_verification_screen.dart';
 import 'app_colors.dart';
 
@@ -21,6 +22,8 @@ class CraftyBay extends StatelessWidget {
         EmailVerificationScreen.name: (context) =>
             const EmailVerificationScreen(),
         OtpVerificationScreen.name: (context) => const OtpVerificationScreen(),
+        CompleteProfileScreen.name: (context) => const CompleteProfileScreen(),
+
       },
     );
   }
