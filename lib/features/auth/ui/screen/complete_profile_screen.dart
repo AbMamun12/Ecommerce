@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/common/widgets/app_icon_widget.dart';
+import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 
 class CompleteProfileScreen extends StatefulWidget {

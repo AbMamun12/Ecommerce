@@ -1,5 +1,5 @@
 import 'package:e_commerce/features/auth/ui/screen/otp_verification_screen.dart';
-import 'package:e_commerce/features/common/widgets/app_icon_widget.dart';
+import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 

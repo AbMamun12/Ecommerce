@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/app_constant.dart';
 import 'package:e_commerce/features/auth/ui/screen/complete_profile_screen.dart';
-import 'package:e_commerce/features/common/widgets/app_icon_widget.dart';
+import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
