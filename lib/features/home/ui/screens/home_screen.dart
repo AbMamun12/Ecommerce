@@ -1,6 +1,6 @@
 import 'package:e_commerce/app/assets_path.dart';
 import 'package:e_commerce/features/home/ui/widgets/app_bar_icon_button.dart';
-import 'package:e_commerce/features/home/ui/widgets/category_item_widget.dart';
+import 'package:e_commerce/features/common/ui/widgets/category_item_widget.dart';
 import 'package:e_commerce/features/home/ui/widgets/home_carousel_slider.dart';
 import 'package:e_commerce/features/home/ui/widgets/home_section_header.dart';
 import 'package:e_commerce/features/home/ui/widgets/product_item_widget.dart';
