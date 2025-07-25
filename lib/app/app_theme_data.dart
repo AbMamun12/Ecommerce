@@ -12,6 +12,11 @@ class AppThemeData {
       appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
       ),
       inputDecorationTheme: const InputDecorationTheme(
         fillColor: Colors.white,
