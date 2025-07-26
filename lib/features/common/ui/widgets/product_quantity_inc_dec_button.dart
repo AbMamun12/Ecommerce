@@ -20,7 +20,7 @@ class _ProductQuantityIncDecButtonState
     return Row(
       children: [
         _buildIconButton(
-          icon: Icons.add,
+          icon: Icons.remove,
           onTap: () {
             if (_count > 1) {
               _count--;
