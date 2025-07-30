@@ -1,11 +1,13 @@
 import 'package:e_commerce/app/app_colors.dart';
+import 'package:e_commerce/features/common/data/models/product_Model.dart';
 import 'package:e_commerce/features/product/ui/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({
-    super.key,
+    super.key, required this.productModel,
   });
+  final ProductModel  productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,6 @@ class ProductItemWidget extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: AppColors.themeColor.withOpacity(0.12),
                   borderRadius: BorderRadius.only(
@@ -31,10 +32,12 @@ class ProductItemWidget extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
                 ),
-                child: Image.asset(
-                  'assets/images/nike_shoe.png',
+                child: Image.network(
+                  productModel.image??'',
                   width: 140,
-                  height: 80,
+                  fit: BoxFit.scaleDown ,
+                  height: 90,
+
                 ),
               ),
               Padding(
@@ -42,9 +45,9 @@ class ProductItemWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Nike shoe latest edition-JJo546F',
+                      productModel.title??'',
                       maxLines: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w500,
                         color: Colors.black54,
@@ -55,8 +58,8 @@ class ProductItemWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\$100',
-                          style: TextStyle(
+                          '\$${productModel.price??''}',
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: AppColors.themeColor,
                           ),
@@ -69,8 +72,8 @@ class ProductItemWidget extends StatelessWidget {
                               size: 18,
                             ),
                             Text(
-                              '4.5',
-                              style: TextStyle(
+                              '${productModel.star ?? '0.0'}',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.themeColor,
                               ),

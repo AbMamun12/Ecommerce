@@ -30,7 +30,8 @@ class CraftyBay extends StatelessWidget {
         } else if (settings.name == EmailVerificationScreen.name) {
           widget = const EmailVerificationScreen();
         } else if (settings.name == OtpVerificationScreen.name) {
-          widget = const OtpVerificationScreen();
+          String email = settings.arguments as String;
+          widget = OtpVerificationScreen(email: email);
         } else if (settings.name == CompleteProfileScreen.name) {
           widget = const CompleteProfileScreen();
         } else if (settings.name == MainBottomNavScreen.name) {
@@ -38,9 +39,13 @@ class CraftyBay extends StatelessWidget {
         } else if (settings.name == CategoryListScreen.name) {
           widget = const CategoryListScreen();
         } else if (settings.name == ProductListScreen.name) {
-          String name = settings.arguments as String;
-          widget = ProductListScreen(categoryName: name);
-        }else if (settings.name == ProductDetailsScreen.name) {
+          Map<String, dynamic> args =
+              settings.arguments as Map<String, dynamic>;
+          widget = ProductListScreen(
+            categoryName: args['categoryName'],
+            categoryId: args['categoryId'],
+          );
+        } else if (settings.name == ProductDetailsScreen.name) {
           int productId = settings.arguments as int;
           widget = ProductDetailsScreen(productId: productId);
         }

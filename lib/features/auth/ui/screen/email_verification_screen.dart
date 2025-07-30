@@ -1,7 +1,11 @@
+import 'package:e_commerce/features/auth/ui/controllers/email_verification_controller.dart';
 import 'package:e_commerce/features/auth/ui/screen/otp_verification_screen.dart';
 import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
+import 'package:e_commerce/features/common/ui/widgets/centered_circular_progress_indicator.dart';
+import 'package:e_commerce/features/common/ui/widgets/snack_bar_message.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EmailVerificationScreen extends StatefulWidget {
   const EmailVerificationScreen({super.key});
@@ -16,6 +20,8 @@ class EmailVerificationScreen extends StatefulWidget {
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   final TextEditingController _emailTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final EmailVerificationController _emailVerificationController =
+      Get.find<EmailVerificationController>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +63,16 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   },
                 ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, OtpVerificationScreen.name);
-                    //if (_formKey.currentState!.validate()) {}
+                GetBuilder<EmailVerificationController>(
+                  builder: (controller) {
+                    if (controller.inProgress) {
+                      return CenteredCircularProgressIndicator();
+                    }
+                    return ElevatedButton(
+                      onPressed: _onTapNextButton,
+                      child: const Text('Next'),
+                    );
                   },
-                  child: const Text('Next'),
                 ),
               ],
             ),
@@ -70,5 +80,29 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
         ),
       ),
     );
+  }
+
+  void _onTapNextButton() async {
+    if (_formKey.currentState!.validate()) {
+      bool isSuccess = await _emailVerificationController.verifyEmail(
+        _emailTEController.text.trim(),
+      );
+      if (isSuccess) {
+        if (mounted) {
+          Navigator.pushNamed(
+            context,
+            OtpVerificationScreen.name,
+            arguments: _emailTEController.text.trim(),
+          );
+        }
+      } else {
+        if (mounted) {
+          showSnackBarMessage(
+            context,
+            _emailVerificationController.errorMessage!,
+          );
+        }
+      }
+    }
   }
 }

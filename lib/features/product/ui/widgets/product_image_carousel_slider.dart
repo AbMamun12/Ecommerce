@@ -3,13 +3,17 @@ import 'package:e_commerce/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductImageCarouselSlider extends StatefulWidget {
-  const ProductImageCarouselSlider({super.key});
+  const ProductImageCarouselSlider({super.key, required this.imageUrls});
+
+  final List<String> imageUrls;
 
   @override
-  State<ProductImageCarouselSlider> createState() => _ProductImageCarouselSliderState();
+  State<ProductImageCarouselSlider> createState() =>
+      _ProductImageCarouselSliderState();
 }
 
-class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider> {
+class _ProductImageCarouselSliderState
+    extends State<ProductImageCarouselSlider> {
   final ValueNotifier<int> _selectedIndex = ValueNotifier(0);
 
   @override
@@ -24,16 +28,14 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
               _selectedIndex.value = currentIndex;
             },
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.imageUrls.map((url) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color:Colors.grey,
-                  ),
+                  decoration: BoxDecoration(color: Colors.grey,
+                  image: DecorationImage(image: NetworkImage(url))),
                   alignment: Alignment.center,
-                  child: Text('text $i', style: TextStyle(fontSize: 16.0)),
                 );
               },
             );
@@ -49,17 +51,15 @@ class _ProductImageCarouselSliderState extends State<ProductImageCarouselSlider>
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for (int i = 0; i < 5; i++)
+                  for (int i = 0; i < widget.imageUrls.length; i++)
                     Container(
-                      height:16,
+                      height: 16,
                       width: 16,
                       margin: EdgeInsets.symmetric(horizontal: 2),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: value == i
-                              ? AppColors.themeColor
-                              : Colors.white,
-                          border: Border.all(color: Colors.grey.shade300)
+                        borderRadius: BorderRadius.circular(20),
+                        color: value == i ? AppColors.themeColor : Colors.white,
+                        border: Border.all(color: Colors.grey.shade300),
                       ),
                     ),
                 ],

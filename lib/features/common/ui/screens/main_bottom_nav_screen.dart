@@ -1,11 +1,16 @@
 import 'package:e_commerce/features/cart/ui/screens/cart_list_screens.dart';
 import 'package:e_commerce/features/category/ui/screens/category_list_screen.dart';
+import 'package:e_commerce/features/common/ui/controllers/category_list_controller.dart';
 import 'package:e_commerce/features/common/ui/controllers/main_bottom_nav_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/home_banner_list_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/new_product_list_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/popular_product_list_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/special_product_list_controller.dart';
 import 'package:e_commerce/features/home/ui/screens/home_screen.dart';
 import 'package:e_commerce/features/wishlist/ui/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({super.key});
@@ -16,6 +21,9 @@ class MainBottomNavScreen extends StatefulWidget {
 }
 
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
+  final HomeBannerListController _homeBannerListController =
+  Get.find<HomeBannerListController>();
+
   final List<Widget>_screens = const[
    HomeScreen(),
     CategoryListScreen(),
@@ -23,6 +31,19 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
     WishListScreen(),
 
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _homeBannerListController.getHomeBannerList();
+    Get.find<CategoryListController>().getCategoryList();
+    Get.find<PopularProductListController>().getProductList();
+    Get.find<SpecialProductListController>().getProductList();
+    Get.find<NewProductListController>().getProductList();
+
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainBottomNavController>(

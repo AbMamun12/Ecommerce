@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/app/app_colors.dart';
+import 'package:e_commerce/features/home/data/models/banner_model.dart';
 import 'package:flutter/material.dart';
 
 class HomeCarouselSlider extends StatefulWidget {
-  const HomeCarouselSlider({super.key});
+  const HomeCarouselSlider({super.key, required this.bannerList});
+
+  final List<BannerModel> bannerList;
 
   @override
   State<HomeCarouselSlider> createState() => _HomeCarouselSliderState();
@@ -24,7 +27,7 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
               _selectedIndex.value = currentIndex;
             },
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.bannerList.map((banner) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -33,32 +36,58 @@ class _HomeCarouselSliderState extends State<HomeCarouselSlider> {
                   decoration: BoxDecoration(
                     color: AppColors.themeColor,
                     borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                      image: NetworkImage(banner.image ?? ''),
+                      fit: BoxFit.cover
+                    ),
                   ),
-                  alignment: Alignment.center,
-                  child: Text('text $i', style: TextStyle(fontSize: 16.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          banner.title ?? '',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 90,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Buy now'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             );
           }).toList(),
         ),
-        const SizedBox(height: 8,),
+        const SizedBox(height: 8),
         ValueListenableBuilder(
           valueListenable: _selectedIndex,
           builder: (context, value, _) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < widget.bannerList.length; i++)
                   Container(
-                    height:16,
-                      width: 16,
+                    height: 16,
+                    width: 16,
                     margin: EdgeInsets.symmetric(horizontal: 2),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: value == i
                           ? AppColors.themeColor
                           : Colors.transparent,
-                      border: Border.all(color: Colors.grey.shade300)
+                      border: Border.all(color: Colors.grey.shade300),
                     ),
                   ),
               ],
