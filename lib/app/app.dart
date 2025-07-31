@@ -9,8 +9,8 @@ import 'package:e_commerce/features/product/ui/screens/product_list_screen.dart'
 import 'package:e_commerce/features/wishlist/ui/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import '../features/auth/ui/screen/complete_profile_screen.dart';
-import '../features/auth/ui/screen/email_verification_screen.dart';
+import '../features/auth/ui/screen/sign-up-screen.dart';
+import '../features/auth/ui/screen/sign_in_screen.dart';
 
 class CraftyBay extends StatelessWidget {
   const CraftyBay({super.key});
@@ -18,7 +18,7 @@ class CraftyBay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/',
+      initialRoute: SplashScreen.name,
       theme: AppThemeData.lightThemeData,
       darkTheme: AppThemeData.darkThemeData,
       themeMode: ThemeMode.light,
@@ -27,13 +27,13 @@ class CraftyBay extends StatelessWidget {
         late Widget widget;
         if (settings.name == SplashScreen.name) {
           widget = const SplashScreen();
-        } else if (settings.name == EmailVerificationScreen.name) {
-          widget = const EmailVerificationScreen();
+        } else if (settings.name == SignInScreen.name) {
+          widget = const SignInScreen();
         } else if (settings.name == OtpVerificationScreen.name) {
           String email = settings.arguments as String;
           widget = OtpVerificationScreen(email: email);
-        } else if (settings.name == CompleteProfileScreen.name) {
-          widget = const CompleteProfileScreen();
+        } else if (settings.name == SignUpScreen.name) {
+          widget = const SignUpScreen();
         } else if (settings.name == MainBottomNavScreen.name) {
           widget = const MainBottomNavScreen();
         } else if (settings.name == CategoryListScreen.name) {
