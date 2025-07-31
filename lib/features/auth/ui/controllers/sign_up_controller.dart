@@ -1,8 +1,5 @@
 import 'package:e_commerce/app/urls.dart';
-import 'package:e_commerce/features/auth/data/models/sign_in_model.dart';
 import 'package:e_commerce/features/auth/data/models/sign_up_params.dart';
-import 'package:e_commerce/features/auth/ui/controllers/read_profile_controller.dart';
-import 'package:e_commerce/features/common/ui/controllers/auth_controller.dart';
 import 'package:e_commerce/service/network_caller/network_caller.dart';
 import 'package:get/get.dart';
 

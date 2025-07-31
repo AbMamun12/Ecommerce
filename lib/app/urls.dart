@@ -3,10 +3,8 @@ class Urls {
 
   static String signInUrl = '$_baseUrl/auth/login';
   static String signUpUrl = '$_baseUrl//auth/signup';
+  static String verifyOtpUrl='$_baseUrl/auth/verify-otp';
 
-
-  static String verifyOtpUrl(String email, String otp) =>
-      '$_baseUrl/VerifyLogin/$email/$otp';
   static String readProfileUrl = '$_baseUrl/ReadProfile';
   static String bannerListUrl = '$_baseUrl/ListProductSlider';
   static String categoryListUrl = '$_baseUrl/CategoryList';

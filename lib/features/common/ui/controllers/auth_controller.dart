@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:e_commerce/features/auth/data/models/profile_model.dart';
-import 'package:e_commerce/features/auth/data/models/sign_in_model.dart';
+import 'package:e_commerce/features/auth/data/models/auth_success_model.dart';
 import 'package:e_commerce/features/auth/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/app_constant.dart';
 import 'package:e_commerce/features/auth/ui/controllers/otp_verification_controller.dart';
-import 'package:e_commerce/features/auth/ui/controllers/read_profile_controller.dart';
-import 'package:e_commerce/features/auth/ui/screen/sign-up-screen.dart';
 import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
 import 'package:e_commerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:e_commerce/features/common/ui/widgets/centered_circular_progress_indicator.dart';
@@ -31,8 +29,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final RxBool _enableResendCodeButton = false.obs;
   final OtpVerificationController _otpVerificationController =
       Get.find<OtpVerificationController>();
-  final ReadProfileController _readProfileController =
-      Get.find<ReadProfileController>();
+
 
   @override
   void initState() {
@@ -77,7 +74,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 ),
                 const SizedBox(height: 24),
                 PinCodeTextField(
-                  length: 6,
+                  length: 4,
                   obscureText: false,
                   animationType: AnimationType.fade,
                   animationDuration: const Duration(milliseconds: 300),
@@ -91,7 +88,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   appContext: context,
                   controller: _otpTEController,
                   validator: (String? value) {
-                    if (value?.length != 6) {
+                    if (value?.length != 4) {
                       return 'Enter your otp';
                     }
                     return null;
@@ -153,11 +150,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         _otpTEController.text,
       );
       if (response) {
-        if (_otpVerificationController.shouldNavigateCompleteProfile) {
-          if (mounted) {
-            Navigator.pushNamed(context, SignUpScreen.name);
-          }
-        } else {
           if (mounted) {
             Navigator.pushNamedAndRemoveUntil(
               context,
@@ -165,7 +157,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               (predicate) => false,
             );
           }
-        }
+
       } else {
         if (mounted) {
           showSnackBarMessage(
