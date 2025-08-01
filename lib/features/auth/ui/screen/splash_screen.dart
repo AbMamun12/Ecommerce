@@ -1,5 +1,5 @@
-import 'package:e_commerce/features/auth/ui/screen/sign-up-screen.dart';
 import 'package:e_commerce/features/auth/ui/widgets/app_icon_widget.dart';
+import 'package:e_commerce/features/common/ui/screens/main_bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,8 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void>_moveToScreen()async{
     await Future.delayed(const Duration(seconds: 2));
-    //Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
-    Navigator.pushReplacementNamed(context, SignUpScreen.name);
+    Navigator.pushReplacementNamed(context, MainBottomNavScreen.name);
 
   }
   @override

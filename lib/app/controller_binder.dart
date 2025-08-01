@@ -5,8 +5,8 @@ import 'package:e_commerce/features/common/ui/controllers/auth_controller.dart';
 import 'package:e_commerce/features/common/ui/controllers/category_list_controller.dart';
 import 'package:e_commerce/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:e_commerce/features/common/ui/controllers/product_list_controller.dart';
-import 'package:e_commerce/features/home/ui/controllers/home_banner_list_controller.dart';
 import 'package:e_commerce/features/home/ui/controllers/product_list_by_remark_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/slider_list_controller.dart';
 import 'package:e_commerce/features/home/ui/controllers/special_product_list_controller.dart';
 import 'package:e_commerce/features/product/ui/controllers/product_details_controller.dart';
 import 'package:e_commerce/service/network_caller/network_caller.dart';
@@ -24,7 +24,7 @@ class ControllerBinder extends Bindings{
     Get.put(SignInController());
     Get.put(SignUpController());
     Get.put(OtpVerificationController());
-    Get.put(HomeBannerListController());
+    Get.put(SliderListController());
     Get.put(CategoryListController());
     Get.put(ProductListByRemarkController());
     Get.put(PopularProductListController());
@@ -32,6 +32,8 @@ class ControllerBinder extends Bindings{
     Get.put(NewProductListController());
     Get.put(ProductListController());
     Get.put(ProductDetailsController());
+
+
 
 
 

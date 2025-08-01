@@ -1,12 +1,12 @@
 import 'package:e_commerce/features/home/data/models/banner_model.dart';
 
-class BannerListModel {
+class SliderListModel {
   String? msg;
   List<BannerModel>? bannerList;
 
-  BannerListModel({this.msg, this.bannerList});
+  SliderListModel({this.msg, this.bannerList});
 
-  BannerListModel.fromJson(Map<String, dynamic> json) {
+  SliderListModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     if (json['data'] != null) {
       bannerList = <BannerModel>[];

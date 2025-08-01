@@ -4,9 +4,9 @@ import 'package:e_commerce/features/common/data/models/product_Model.dart';
 import 'package:e_commerce/features/common/ui/controllers/category_list_controller.dart';
 import 'package:e_commerce/features/common/ui/controllers/main_bottom_nav_controller.dart';
 import 'package:e_commerce/features/common/ui/widgets/ShimmerCategoryGrid.dart';
-import 'package:e_commerce/features/home/ui/controllers/home_banner_list_controller.dart';
 import 'package:e_commerce/features/home/ui/controllers/new_product_list_controller.dart';
 import 'package:e_commerce/features/home/ui/controllers/popular_product_list_controller.dart';
+import 'package:e_commerce/features/home/ui/controllers/slider_list_controller.dart';
 import 'package:e_commerce/features/home/ui/controllers/special_product_list_controller.dart';
 import 'package:e_commerce/features/home/ui/widgets/app_bar_icon_button.dart';
 import 'package:e_commerce/features/common/ui/widgets/category_item_widget.dart';
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               ProductSearchBar(controller: _searchBarController),
               const SizedBox(height: 16),
-              GetBuilder<HomeBannerListController>(
+              GetBuilder<SliderListController>(
                 builder: (controller) {
                   if (controller.inProgress) {
                     return SizedBox(
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
                   return HomeCarouselSlider(
-                    bannerList: controller.bannerList,
+                    sliderList: controller.bannerList,
                   );
                 },
               ),
