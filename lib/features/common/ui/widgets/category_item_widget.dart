@@ -1,12 +1,12 @@
 import 'package:e_commerce/app/app_colors.dart';
-import 'package:e_commerce/features/common/data/models/category_model.dart';
+import 'package:e_commerce/features/common/data/models/category/category_pagination_model.dart';
 import 'package:e_commerce/features/product/ui/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   const CategoryItemWidget({super.key, required this.categoryModel});
 
-  final CategoryModel categoryModel;
+  final CategoryItemModel categoryModel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ class CategoryItemWidget extends StatelessWidget {
           context,
           ProductListScreen.name,
           arguments: {
-            'categoryName': categoryModel.categoryName??'',
-            'categoryId': categoryModel.id!,
+            'categoryName': categoryModel.title??'',
+            'categoryId': categoryModel.sId!,
 
           },
         );
@@ -31,14 +31,14 @@ class CategoryItemWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Image.network(
-              categoryModel.categoryImg ?? '',
+              categoryModel.icon ?? '',
               height: 40,
               width: 40,
               fit: BoxFit.scaleDown,
             ),
           ),
           Text(
-            categoryModel.categoryName ?? '',
+            categoryModel.title ?? '',
             style: TextStyle(
               fontSize: 16,
               color: AppColors.themeColor,

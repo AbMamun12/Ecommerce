@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Row(children: _getCategoryList(controller.categoryList)),
+                    //child: Row(children: _getCategoryList(controller.categoryList)),
                   );
                 }
               ),
@@ -137,17 +137,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> _getCategoryList(List<CategoryModel>categoryModels) {
+  List<Widget> _getCategoryList(List<CategoryItemModel>categoryModels) {
     List<Widget> categoryList = [];
     for (int i = 0; i < categoryModels.length; i++) {
-      categoryList.add(
-         Padding(
-          padding: EdgeInsets.only(right: 16),
-          child: CategoryItemWidget(
-            categoryModel: categoryModels[i],
-          ),
-        ),
-      );
+      // categoryList.add(
+      //    Padding(
+      //     padding: EdgeInsets.only(right: 16),
+      //     child: CategoryItemWidget(
+      //       categoryModel: categoryModels[i],
+      //     ),
+      //   ),
+      // );
     }
     return categoryList;
   }

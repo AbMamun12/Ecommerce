@@ -4,7 +4,7 @@ class SliderPaginationModel {
   int? code;
   String? status;
   String? msg;
-  SliderListDataModel? data;
+  PaginationModel? data;
 
   SliderPaginationModel({this.code, this.status, this.msg, this.data});
 
@@ -13,7 +13,7 @@ class SliderPaginationModel {
     status = json['status'];
     msg = json['msg'];
     data = json['data'] != null
-        ? SliderListDataModel.fromJson(json['data'])
+        ? PaginationModel.fromJson(json['data'])
         : null;
   }
 

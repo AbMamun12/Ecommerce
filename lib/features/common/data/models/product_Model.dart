@@ -17,7 +17,7 @@ class ProductModel {
   String? createdAt;
   String? updatedAt;
   BrandModel? brand;
-  CategoryModel? category;
+  CategoryItemModel? category;
 
   ProductModel(
       {this.id,
@@ -54,7 +54,7 @@ class ProductModel {
     updatedAt = json['updated_at'];
     brand = json['brand'] != null ? BrandModel.fromJson(json['brand']) : null;
     category = json['category'] != null
-        ? CategoryModel.fromJson(json['category'])
+        ? CategoryItemModel.fromJson(json['category'])
         : null;
   }
 
