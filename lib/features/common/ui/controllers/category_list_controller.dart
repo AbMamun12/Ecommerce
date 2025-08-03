@@ -8,9 +8,9 @@ class CategoryListController extends GetxController {
 
   bool get inProgress => _inProgress;
 
-  bool get initialInProgress => _page == 1;
+  bool get initialInProgress => _page == 1  && inProgress;
 
-  List<CategoryItemModel> _categoryList = [];
+  final List<CategoryItemModel> _categoryList = [];
 
   List<CategoryItemModel> get categoryList => _categoryList ?? [];
   String? _errorMessage;
@@ -36,6 +36,9 @@ class CategoryListController extends GetxController {
       CategoryPaginationModel paginationModel =
           CategoryPaginationModel.fromJson(response.responseData);
       _categoryList.addAll(paginationModel.data?.results ?? []);
+      if (paginationModel.data?.lastPage!=null){
+        _lastPage=paginationModel.data!.lastPage!;
+      }
       isSuccess = true;
     } else {
       _errorMessage = response.errorMessage;
@@ -44,5 +47,12 @@ class CategoryListController extends GetxController {
     update();
 
     return isSuccess;
+  }
+
+  Future<bool>refreshCategoryList()async{
+    _page=0;
+    _lastPage=null;
+    _categoryList.clear();
+    return getCategoryList();
   }
 }
